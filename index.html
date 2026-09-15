@@ -277,9 +277,24 @@
       margin-top: calc(-1 * var(--nav-h));
       padding-top: calc(var(--nav-h) + 2rem);
       padding-bottom: 4rem;
-      background: #c4a88a center/cover no-repeat;
-      background-image: linear-gradient(135deg, rgba(107, 66, 38, 0.72) 0%, rgba(61, 43, 31, 0.55) 100%),
-        linear-gradient(160deg, #d4b896 0%, #8b6914 40%, #6B4226 100%);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(135deg, rgba(107, 66, 38, 0.68) 0%, rgba(61, 43, 31, 0.52) 55%, rgba(61, 43, 31, 0.75) 100%);
     }
     .hero-inner {
       position: relative;
@@ -291,20 +306,8 @@
     }
     .hero-inner h1 { color: var(--white); margin-bottom: 1rem; }
     .hero-inner .hero-lead { color: rgba(255, 255, 255, 0.92); max-width: none; margin-inline: auto; }
-    .hero-placeholder-note {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.35);
-      pointer-events: none;
-      z-index: 0;
-    }
     .hero-scroll {
+      z-index: 1;
       position: absolute;
       bottom: 1.5rem;
       left: 50%;
@@ -381,18 +384,17 @@
     .about-photo {
       aspect-ratio: 3/4;
       border-radius: 20px;
-      background: linear-gradient(145deg, rgba(196, 139, 110, 0.35), rgba(107, 66, 38, 0.2));
-      border: 2px dashed rgba(107, 66, 38, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--primary);
-      font-family: var(--font-head);
-      font-size: 1.15rem;
-      font-style: italic;
+      overflow: hidden;
+      margin: 0;
       box-shadow: 0 16px 40px var(--shadow);
+      background: rgba(196, 139, 110, 0.15);
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
     .credentials {
       display: flex;
@@ -755,79 +757,184 @@
     }
 
     /* —— Kontakt & Footer —— */
-    .map-placeholder {
-      margin-top: 1.5rem;
-      min-height: 220px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, rgba(196, 139, 110, 0.25), rgba(107, 66, 38, 0.15));
-      border: 2px dashed rgba(107, 66, 38, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.9rem;
+    .contact-section {
+      background: var(--bg);
+      padding: 80px 0;
     }
-    .newsletter {
-      margin-top: 2.5rem;
-      padding: 2rem;
+    .contact-section .contact-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+    .contact-section .contact-header h2 {
+      margin-bottom: 0.75rem;
+    }
+    .contact-section .contact-subtitle {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--text);
+      opacity: 0.85;
+    }
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+    .contact-card {
+      flex: 1 1 280px;
+      max-width: 360px;
       background: var(--white);
       border-radius: 16px;
-      box-shadow: 0 8px 28px var(--shadow);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+    .contact-card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(196, 139, 110, 0.2);
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .contact-card-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+    .contact-card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 0.75rem;
+    }
+    .contact-card p {
+      margin: 0.35rem 0;
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+    .contact-card a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .contact-card a:hover { color: var(--accent); }
+    .contact-card .map-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .newsletter-banner {
+      background: var(--primary);
+      color: var(--white);
+      padding: 50px 60px;
+    }
+    .newsletter-banner-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .newsletter-banner-text h2 {
+      color: var(--white);
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    .newsletter-banner-text p {
+      margin: 0;
+      opacity: 0.92;
+      max-width: 42ch;
     }
     .newsletter-form {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-top: 1rem;
+      flex: 1 1 320px;
+      justify-content: flex-end;
     }
     .newsletter-form input {
-      flex: 1 1 200px;
-      padding: 0.75rem 1rem;
-      border: 1px solid rgba(107, 66, 38, 0.25);
+      flex: 1 1 220px;
+      min-width: 200px;
+      padding: 0.85rem 1.25rem;
+      border: none;
       border-radius: 999px;
       font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text);
     }
-    .footer-credits {
-      width: 100%;
-      text-align: center;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(245, 237, 227, 0.2);
-      font-size: 0.85rem;
-      opacity: 0.85;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    @media (max-width: 700px) {
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-    .contact-form label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 0.35rem;
-      font-size: 0.9rem;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      border: 1px solid rgba(107, 66, 38, 0.25);
-      border-radius: 8px;
+    .newsletter-form .btn-newsletter {
+      padding: 0.85rem 1.75rem;
+      border: none;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--white);
       font-family: var(--font-body);
-      background: var(--white);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.25s;
     }
-    .contact-info p { margin: 0.5rem 0; }
-    .social-links {
+    .newsletter-form .btn-newsletter:hover {
+      background: #b07a5f;
+    }
+
+    .site-footer {
+      background: var(--text);
+      color: var(--bg);
+      padding: 60px 0 30px;
+      padding-bottom: calc(30px + 5rem);
+    }
+    .footer-wrap {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 4vw, 2rem);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .footer-logo {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      margin: 0 0 1.25rem;
+      font-style: italic;
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+    .footer-social {
       display: flex;
-      gap: 1rem;
-      margin-top: 1.25rem;
+      gap: 0.75rem;
     }
-    .social-links a {
+    .footer-social a {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -837,26 +944,92 @@
       background: var(--primary);
       color: var(--white);
       text-decoration: none;
+      transition: background 0.25s;
     }
-    .social-links a:hover { background: var(--accent); }
-    .social-links svg { width: 22px; height: 22px; fill: currentColor; }
-
-    .site-footer {
-      background: var(--primary);
+    .footer-social a:hover { background: var(--accent); }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-col-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 1.25rem;
       color: var(--bg);
-      padding: 2rem 0;
-      margin-top: 2rem;
     }
-    .footer-inner {
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-links li { margin-bottom: 0.65rem; }
+    .footer-links a {
+      color: var(--bg);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.25s;
+    }
+    .footer-links a:hover { opacity: 1; }
+    .footer-contact p {
+      margin: 0 0 0.5rem;
+      opacity: 0.85;
+    }
+    .footer-contact a {
+      color: var(--bg);
+      text-decoration: none;
+      opacity: 0.85;
+    }
+    .footer-contact a:hover { opacity: 1; }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin: 0 0 1.5rem;
+    }
+    .footer-bottom {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
     }
-    .site-footer a { color: var(--bg); }
-    .site-footer p { margin: 0; }
+    .footer-bottom a {
+      color: var(--bg);
+      text-decoration: none;
+    }
+    .footer-bottom a:hover { opacity: 1; }
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      align-items: center;
+    }
+    .footer-legal span { opacity: 0.5; }
+
+    @media (max-width: 768px) {
+      .contact-section { padding: 60px 0; }
+      .contact-cards { flex-direction: column; align-items: stretch; }
+      .contact-card { max-width: none; }
+      .newsletter-banner { padding: 40px 1.5rem; }
+      .newsletter-banner-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .newsletter-banner-text p { margin-inline: auto; }
+      .newsletter-form { justify-content: center; width: 100%; }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+      .footer-social { justify-content: center; }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+      .footer-legal { justify-content: center; }
+    }
 
     .back-to-top {
       position: fixed;
@@ -930,7 +1103,10 @@
   <main id="main">
     <!-- SECTION: Hero -->
     <section class="hero fade-in" id="hem" aria-labelledby="hero-heading">
-      <p class="hero-placeholder-note" aria-hidden="true">Hero Image Placeholder</p>
+      <div class="hero-bg">
+        <img src="assets/hero.png" width="1024" height="683" alt="Kvinna som stretchar i morgonsol vid fönster – lugn och nystart">
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
       <div class="container hero-inner">
         <h1 id="hero-heading">Där vägar möts för ett liv i balans</h1>
         <p class="hero-lead">Neuropsykologi &amp; livscoaching med Jessika Ekström</p>
@@ -984,7 +1160,9 @@
     <section class="fade-in" id="om-jessika" aria-labelledby="about-heading">
       <div class="container">
         <div class="about-grid">
-          <div class="about-photo" role="img" aria-label="Jessika Ekström – Foto">Jessika Ekström – Foto</div>
+          <figure class="about-photo">
+            <img src="assets/jessika.png" width="600" height="800" alt="Porträtt av Jessika Ekström, grundare av Alltriva">
+          </figure>
           <div>
             <h2 id="about-heading">Möt Jessika Ekström</h2>
             <p>Legitimerad psykolog med specialisering inom neuropsykologi och kognitiv beteendeterapi. Med över tio års erfarenhet hjälper jag individer och par att förstå sina mönster, bygga resiliens och skapa varaktiga förändringar. Min approach kombinerar den senaste hjärnforskningen med varma, trygga samtal.</p>
@@ -1099,8 +1277,8 @@
             <a href="https://calendly.com/alltriva-placeholder" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Öppna Calendly</a>
           </div>
           <div class="booking-option">
-            <h3>Ring eller mejla</h3>
-            <p><a href="tel:+46701234567">070-123 45 67</a><br><a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
+            <h3>Mejla oss</h3>
+            <p><a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
             <a href="mailto:hello@alltriva.se" class="btn btn-outline">Skicka e-post</a>
           </div>
         </div>
@@ -1134,18 +1312,58 @@
       </div>
     </section>
 
-    <!-- SECTION: Kontakt + Footer -->
-    <section class="fade-in" id="kontakt" aria-labelledby="contact-heading">
+    <!-- SECTION: Kontakt -->
+    <section class="contact-section fade-in" id="kontakt" aria-labelledby="contact-heading">
       <div class="container">
-        <h2 id="contact-heading">Kontakt</h2>
-        <div class="contact-grid">
-          <div class="contact-info">
-            <p><strong>Alltriva</strong><br>Jessika Ekström</p>
-            <p>Storgatan 1<br>111 22 Stockholm<br><em>(Adress – placeholder)</em></p>
-            <p>Telefon: <a href="tel:+46701234567">070-123 45 67</a></p>
-            <p>E-post: <a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
-            <div class="map-placeholder" role="img" aria-label="Karta – placeholder">Karta – placeholder</div>
-            <nav class="social-links" aria-label="Sociala medier">
+        <header class="contact-header">
+          <h2 id="contact-heading">Kontakt</h2>
+          <p class="contact-subtitle">Jag ser fram emot att höra från dig</p>
+        </header>
+        <div class="contact-cards">
+          <article class="contact-card">
+            <div class="contact-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            </div>
+            <p class="contact-card-label">Mejla oss</p>
+            <p>Du når mig enklast via e-post – jag återkommer så snart jag kan.</p>
+            <p><a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
+            <a class="map-link" href="mailto:hello@alltriva.se">Skicka e-post →</a>
+          </article>
+          <article class="contact-card">
+            <div class="contact-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <p class="contact-card-label">Öppettider</p>
+            <p>Måndag – Fredag: 09:00 – 17:00</p>
+            <p>Lördag – Söndag: Stängt</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Nyhetsbrev-banner -->
+    <div class="newsletter-banner fade-in">
+      <div class="newsletter-banner-inner">
+        <div class="newsletter-banner-text">
+          <h2>Prenumerera på Alltriva-nyhetsbrevet</h2>
+          <p>Få tips om hjärnhälsa, balans och välmående direkt i inkorgen.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" action="#" method="post" aria-label="Nyhetsbrev">
+          <label for="newsletter-email" class="visually-hidden" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">E-postadress</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="Din e-postadress" required autocomplete="email">
+          <button type="submit" class="btn-newsletter">Prenumerera</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SECTION: Footer -->
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="footer-logo" href="#hem">Alltriva</a>
+            <p class="footer-tagline">Där vägar möts för ett liv i balans</p>
+            <nav class="footer-social" aria-label="Sociala medier">
               <a href="https://instagram.com/alltriva" rel="noopener noreferrer" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.4.4 1.1.5 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.3-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.4.2-1.1.4-2.3.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.3-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.4-.4-1.1-.5-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.3.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .4-.2 1.1-.4 2.3-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-2 .4-.5.2-.9.4-1.2.7-.3.3-.5.7-.7 1.2-.2.4-.3 1-.4 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.4.9.7 1.2.3.3.7.5 1.2.7.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.9-.4 1.2-.7.3-.3.5-.7.7-1.2.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.4-.9-.7-1.2-.3-.3-.7-.5-1.2-.7-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.8a3.7 3.7 0 100 7.4 3.7 3.7 0 000-7.4zm5.8-2.4a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/></svg>
               </a>
@@ -1157,24 +1375,36 @@
               </a>
             </nav>
           </div>
-          <div class="newsletter">
-            <h3>Prenumerera på Alltriva-nyhetsbrevet</h3>
-            <p>Få tips om hjärnhälsa, balans och välmående – direkt i inkorgen.</p>
-            <form class="newsletter-form" id="newsletter-form" action="#" method="post" aria-label="Nyhetsbrev">
-              <label for="newsletter-email" class="visually-hidden" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">E-postadress</label>
-              <input type="email" id="newsletter-email" name="email" placeholder="Din e-postadress" required autocomplete="email">
-              <button type="submit" class="btn btn-accent">Prenumerera</button>
-            </form>
+          <div class="footer-col">
+            <h3 class="footer-col-title">Snabblänkar</h3>
+            <ul class="footer-links">
+              <li><a href="#hem">Hem</a></li>
+              <li><a href="#om-jessika">Om Jessika</a></li>
+              <li><a href="#tjanster">Tjänster</a></li>
+              <li><a href="#neurovetenskap">Neurovetenskap</a></li>
+              <li><a href="#omdomen">Omdömen</a></li>
+              <li><a href="#bokning">Boka tid</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-contact">
+            <h3 class="footer-col-title">Kontakt</h3>
+            <p>Jessika Ekström</p>
+            <p><a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
+          </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+          <p>&copy; 2026 Alltriva. Alla rättigheter förbehållna.</p>
+          <div class="footer-legal">
+            <a href="#kontakt">Integritetspolicy</a>
+            <span aria-hidden="true">|</span>
+            <a href="#kontakt">Cookiepolicy</a>
+            <span aria-hidden="true">|</span>
+            <span>Webbplats av Shoreline Tech Studio</span>
           </div>
         </div>
       </div>
-      <footer class="site-footer">
-        <div class="container footer-inner">
-          <p>&copy; 2026 Alltriva | <a href="#kontakt">Integritetspolicy</a> | <a href="#kontakt">Cookiepolicy</a></p>
-          <p class="footer-credits">Webbplats av Shoreline Tech Studio</p>
-        </div>
-      </footer>
-    </section>
+    </footer>
   </main>
 
   <!-- SECTION: Chat widget -->
