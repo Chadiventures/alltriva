@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alltriva – neuropsykologi och coaching med Jessika Ekström. Individuell vägledning, neurovetenskaplig förståelse och hållbar förändring i vardagen.">
+  <meta name="keywords" content="neuropsykologi, coaching, Jessika Ekström, Alltriva, hjärnhälsa, stress, ångest, Sverige">
+  <meta name="author" content="Jessika Ekström">
+  <meta property="og:title" content="Alltriva | Neuropsykologi &amp; coaching">
+  <meta property="og:description" content="Professionell neuropsykologisk vägledning och coaching för dig som vill förstå hjärnan och skapa balans i livet.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:url" content="https://alltriva.se/">
+  <title>Alltriva | Neuropsykologi &amp; coaching – Jessika Ekström</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F5EDE3;
+      --primary: #6B4226;
+      --accent: #C48B6E;
+      --text: #3D2B1F;
+      --white: #fff;
+      --shadow: rgba(61, 43, 31, 0.12);
+      --nav-h: 72px;
+      --font-head: "Playfair Display", Georgia, serif;
+      --font-body: "Lato", system-ui, sans-serif;
+      --focus: 2px solid var(--accent);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
+      color: var(--primary);
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+    h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    h3 { font-size: 1.35rem; }
+
+    a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--accent); }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: var(--focus);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 0.75rem 1rem;
+      background: var(--primary);
+      color: var(--white);
+    }
+    .skip-link:focus { left: 0; }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin-inline: auto;
+    }
+
+    section {
+      padding: clamp(3rem, 8vw, 5.5rem) 0;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* —— Navbar —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s, border-color 0.3s, box-shadow 0.3s, backdrop-filter 0.35s;
+    }
+    .site-header.scrolled {
+      background: rgba(245, 237, 227, 0.96);
+      backdrop-filter: blur(10px);
+      border-color: rgba(107, 66, 38, 0.15);
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+    .site-header:not(.scrolled) .logo,
+    .site-header:not(.scrolled) .nav-menu a:not(.btn),
+    .site-header:not(.scrolled) .nav-social a,
+    .site-header:not(.scrolled) .nav-toggle {
+      color: var(--white);
+    }
+    .site-header:not(.scrolled) .nav-toggle {
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+    .site-header:not(.scrolled) .nav-social svg { fill: var(--white); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--nav-h);
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: var(--font-head);
+      font-size: 1.65rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-end {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-social {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .nav-social a {
+      display: flex;
+      color: var(--primary);
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-social a:hover { opacity: 1; color: var(--accent); }
+    .nav-social svg { width: 20px; height: 20px; fill: currentColor; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--primary);
+      border-radius: 6px;
+      padding: 0.5rem 0.65rem;
+      cursor: pointer;
+      color: var(--primary);
+    }
+    .nav-toggle svg { display: block; }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.75rem, 2vw, 1.5rem);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .nav-menu a:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: #553419;
+      color: var(--white);
+    }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+    .btn-accent:hover {
+      background: #b07a5f;
+      color: var(--white);
+    }
+
+    @media (max-width: 860px) {
+      .nav-toggle { display: block; }
+      .nav-social { display: none; }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(320px, 88vw);
+        height: 100vh;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--bg);
+        padding: calc(var(--nav-h) + 1rem) 1.5rem 2rem;
+        border-left: 1px solid rgba(107, 66, 38, 0.12);
+        box-shadow: -8px 0 32px var(--shadow);
+        transform: translateX(105%);
+        opacity: 1;
+        pointer-events: none;
+        transition: transform 0.4s ease;
+        z-index: 999;
+      }
+      .nav-menu.open {
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+      .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(61, 43, 31, 0.35);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s;
+        z-index: 998;
+      }
+      .nav-overlay.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: flex;
+      align-items: center;
+      margin-top: calc(-1 * var(--nav-h));
+      padding-top: calc(var(--nav-h) + 2rem);
+      padding-bottom: 4rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(135deg, rgba(107, 66, 38, 0.68) 0%, rgba(61, 43, 31, 0.52) 55%, rgba(61, 43, 31, 0.75) 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 780px;
+      margin-inline: auto;
+      color: var(--white);
+    }
+    .hero-inner h1 { color: var(--white); margin-bottom: 1rem; }
+    .hero-inner .hero-lead { color: rgba(255, 255, 255, 0.92); max-width: none; margin-inline: auto; }
+    .hero-scroll {
+      z-index: 1;
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--white);
+      animation: pulse-chevron 2s ease-in-out infinite;
+    }
+    @keyframes pulse-chevron {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 1; transform: translateX(-50%) translateY(8px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-scroll { animation: none; }
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      max-width: 36ch;
+      margin-bottom: 1.75rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.75rem;
+    }
+    .hero-actions .btn-outline {
+      border-color: var(--white);
+      color: var(--white);
+    }
+    .hero-actions .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    /* —— Intro —— */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+      .intro-grid { grid-template-columns: 1fr; }
+    }
+    .intro-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .intro-card svg { width: 48px; height: 48px; color: var(--accent); margin-bottom: 1rem; }
+    .intro-card h3 { margin-top: 0; }
+
+    /* —— Om Jessika —— */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .about-photo {
+      aspect-ratio: 3/4;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 0;
+      box-shadow: 0 16px 40px var(--shadow);
+      background: rgba(196, 139, 110, 0.15);
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .credential-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(196, 139, 110, 0.2);
+      color: var(--primary);
+      border: 1px solid rgba(107, 66, 38, 0.15);
+    }
+    .about-list {
+      padding-left: 1.25rem;
+      margin: 1rem 0;
+    }
+    .about-list li { margin-bottom: 0.5rem; }
+
+    /* —— Tjänster —— */
+    .services-bg { background: rgba(255, 255, 255, 0.45); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    .service-item {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+    .service-item svg { width: 40px; height: 40px; color: var(--accent); margin-bottom: 0.75rem; }
+    .service-item h3 { margin-top: 0; }
+    .service-item .read-more {
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--accent);
+    }
+    .services-cta {
+      margin-top: 2.5rem;
+      text-align: center;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+
+    /* —— Neurovetenskap —— */
+    .section-science {
+      background: var(--primary);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .section-science::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: linear-gradient(120deg, rgba(196, 139, 110, 0.25), transparent 40%, rgba(61, 43, 31, 0.4));
+      animation: science-drift 18s ease-in-out infinite alternate;
+    }
+    @keyframes science-drift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(5%, 3%) rotate(2deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .section-science::before { animation: none; }
+    }
+    .section-science .container { position: relative; z-index: 1; }
+    .section-science h2, .section-science h3 { color: var(--white); }
+    .section-science .section-lead { color: rgba(255, 255, 255, 0.88); }
+    .science-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+      .science-facts { grid-template-columns: 1fr; }
+    }
+    .science-fact {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+    .science-fact h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .science-fact p { margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 0.98rem; }
+
+    /* —— Omdömen —— */
+    .testimonials { text-align: center; }
+    .carousel {
+      position: relative;
+      max-width: 720px;
+      margin: 2rem auto 0;
+      min-height: 200px;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0.6s;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 12px 32px var(--shadow);
+    }
+    .carousel-slide.active {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+    }
+    .stars {
+      color: #c9a227;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .carousel-slide blockquote {
+      margin: 0 0 1rem;
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--primary);
+    }
+    .carousel-slide cite {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(107, 66, 38, 0.25);
+      cursor: pointer;
+      padding: 0;
+    }
+    .carousel-dot.active, .carousel-dot:hover { background: var(--primary); }
+
+    /* —— Bokning & FAQ —— */
+    .booking-faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .booking-faq-grid { grid-template-columns: 1fr; }
+    }
+    .booking-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 640px) {
+      .booking-options { grid-template-columns: 1fr; }
+    }
+    .booking-option {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 28px var(--shadow);
+      text-align: center;
+    }
+    .booking-option .btn { width: 100%; margin-top: 1rem; }
+    .booking-box {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+    .booking-steps { counter-reset: step; list-style: none; padding: 0; }
+    .booking-steps li {
+      counter-increment: step;
+      padding-left: 2.5rem;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .booking-steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1.75rem;
+      height: 1.75rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .faq-list { margin: 0; padding: 0; list-style: none; }
+    .faq-item { border-bottom: 1px solid rgba(107, 66, 38, 0.2); }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 1.1rem 2.5rem 1.1rem 0;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      position: relative;
+    }
+    .faq-question::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .faq-item.open .faq-question::after { content: "−"; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 0 1.1rem;
+      font-size: 0.98rem;
+    }
+
+    /* —— Chat widget —— */
+    .chat-fab {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1.25rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px var(--shadow);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-fab svg { width: 28px; height: 28px; }
+
+    .chat-panel {
+      position: fixed;
+      bottom: 9rem;
+      right: 1.25rem;
+      width: min(360px, calc(100vw - 2rem));
+      max-height: 420px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 16px 48px rgba(61, 43, 31, 0.2);
+      z-index: 901;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px) scale(0.96);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .chat-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+    .chat-header {
+      padding: 1rem 1.25rem;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-header h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      min-height: 180px;
+      max-height: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .chat-msg {
+      max-width: 85%;
+      padding: 0.65rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+    }
+    .chat-msg.bot {
+      background: var(--bg);
+      align-self: flex-start;
+    }
+    .chat-msg.user {
+      background: var(--accent);
+      color: var(--white);
+      align-self: flex-end;
+    }
+    .chat-form {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      border-top: 1px solid rgba(107, 66, 38, 0.1);
+    }
+    .chat-form input {
+      flex: 1;
+      border: 1px solid rgba(107, 66, 38, 0.25);
+      border-radius: 999px;
+      padding: 0.6rem 1rem;
+      font-family: var(--font-body);
+    }
+    .chat-form button {
+      border: none;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 0.6rem 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* —— Kontakt & Footer —— */
+    .contact-section {
+      background: var(--bg);
+      padding: 80px 0;
+    }
+    .contact-section .contact-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+    .contact-section .contact-header h2 {
+      margin-bottom: 0.75rem;
+    }
+    .contact-section .contact-subtitle {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--text);
+      opacity: 0.85;
+    }
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+    .contact-card {
+      flex: 1 1 280px;
+      max-width: 360px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+    .contact-card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(196, 139, 110, 0.2);
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .contact-card-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+    .contact-card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 0.75rem;
+    }
+    .contact-card p {
+      margin: 0.35rem 0;
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+    .contact-card a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .contact-card a:hover { color: var(--accent); }
+    .contact-card .map-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .newsletter-banner {
+      background: var(--primary);
+      color: var(--white);
+      padding: 50px 60px;
+    }
+    .newsletter-banner-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .newsletter-banner-text h2 {
+      color: var(--white);
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    .newsletter-banner-text p {
+      margin: 0;
+      opacity: 0.92;
+      max-width: 42ch;
+    }
+    .newsletter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      flex: 1 1 320px;
+      justify-content: flex-end;
+    }
+    .newsletter-form input {
+      flex: 1 1 220px;
+      min-width: 200px;
+      padding: 0.85rem 1.25rem;
+      border: none;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .newsletter-form .btn-newsletter {
+      padding: 0.85rem 1.75rem;
+      border: none;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .newsletter-form .btn-newsletter:hover {
+      background: #b07a5f;
+    }
+
+    .site-footer {
+      background: var(--text);
+      color: var(--bg);
+      padding: 60px 0 30px;
+      padding-bottom: calc(30px + 5rem);
+    }
+    .footer-wrap {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 4vw, 2rem);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .footer-logo {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      margin: 0 0 1.25rem;
+      font-style: italic;
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .footer-social a:hover { background: var(--accent); }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-col-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 1.25rem;
+      color: var(--bg);
+    }
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-links li { margin-bottom: 0.65rem; }
+    .footer-links a {
+      color: var(--bg);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.25s;
+    }
+    .footer-links a:hover { opacity: 1; }
+    .footer-contact p {
+      margin: 0 0 0.5rem;
+      opacity: 0.85;
+    }
+    .footer-contact a {
+      color: var(--bg);
+      text-decoration: none;
+      opacity: 0.85;
+    }
+    .footer-contact a:hover { opacity: 1; }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin: 0 0 1.5rem;
+    }
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+    .footer-bottom a {
+      color: var(--bg);
+      text-decoration: none;
+    }
+    .footer-bottom a:hover { opacity: 1; }
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      align-items: center;
+    }
+    .footer-legal span { opacity: 0.5; }
+
+    @media (max-width: 768px) {
+      .contact-section { padding: 60px 0; }
+      .contact-cards { flex-direction: column; align-items: stretch; }
+      .contact-card { max-width: none; }
+      .newsletter-banner { padding: 40px 1.5rem; }
+      .newsletter-banner-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .newsletter-banner-text p { margin-inline: auto; }
+      .newsletter-form { justify-content: center; width: 100%; }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+      .footer-social { justify-content: center; }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+      .footer-legal { justify-content: center; }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 899;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px var(--shadow);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top svg { width: 24px; height: 24px; }
+
+    .section-lead {
+      max-width: 60ch;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <!-- SECTION: Navbar (sticky) -->
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+  <header class="site-header" id="site-header">
+    <div class="container nav-inner">
+      <a class="logo" href="#hem" aria-label="Alltriva – startsida">Alltriva</a>
+      <div class="nav-end">
+        <div class="nav-social" aria-label="Sociala medier">
+          <a href="https://instagram.com/alltriva" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.4.4 1.1.5 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.3-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.4.2-1.1.4-2.3.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.3-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.4-.4-1.1-.5-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.3.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .4-.2 1.1-.4 2.3-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-2 .4-.5.2-.9.4-1.2.7-.3.3-.5.7-.7 1.2-.2.4-.3 1-.4 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.4.9.7 1.2.3.3.7.5 1.2.7.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.9-.4 1.2-.7.3-.3.5-.7.7-1.2.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.4-.9-.7-1.2-.3-.3-.7-.5-1.2-.7-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.8a3.7 3.7 0 100 7.4 3.7 3.7 0 000-7.4zm5.8-2.4a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/jessika-ekstrom" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.6c0-1.1-.02-2.5-1.5-2.5-1.5 0-1.7 1.2-1.7 2.4V19h-3v-9h2.9v1.2h.04c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V19z"/></svg>
+          </a>
+        </div>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Öppna menyn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+        <nav aria-label="Huvudnavigation">
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="#hem">Hem</a></li>
+            <li><a href="#om-jessika">Om Jessika</a></li>
+            <li><a href="#tjanster">Tjänster</a></li>
+            <li><a href="#neurovetenskap">Neurovetenskap</a></li>
+            <li><a href="#omdomen">Omdömen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#bokning" class="btn btn-accent">Boka tid</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- SECTION: Hero -->
+    <section class="hero fade-in" id="hem" aria-labelledby="hero-heading">
+      <div class="hero-bg">
+        <img src="assets/hero.png" width="1024" height="683" alt="Kvinna som stretchar i morgonsol vid fönster – lugn och nystart">
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <h1 id="hero-heading">Där vägar möts för ett liv i balans</h1>
+        <p class="hero-lead">Neuropsykologi &amp; livscoaching med Jessika Ekström</p>
+        <div class="hero-actions">
+          <a href="#bokning" class="btn btn-accent">Boka konsultation</a>
+          <a href="#om-jessika" class="btn btn-outline">Läs mer om mig</a>
+        </div>
+      </div>
+      <a href="#intro" class="hero-scroll" aria-label="Scrolla till innehåll">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- SECTION: Intro -->
+    <section class="fade-in" id="intro" aria-labelledby="intro-heading">
+      <div class="container">
+        <h2 id="intro-heading">Välkommen till Alltriva</h2>
+        <p class="section-lead">Med evidensbaserad neuropsykologi och personlig coaching hjälper jag dig hitta balans, inre styrka och verktyg för ett mer meningsfullt liv. Alltriva är en plats där vetenskap möter medkänsla.</p>
+        <div class="intro-grid">
+          <article class="intro-card">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M24 4c-8 2-14 8-16 16-1 4 0 8 2 12-4 2-6 6-6 10 0 6 5 12 12 14 1 4 4 8 10 10 2 1 4 1 6 0 6-2 9-6 10-10 7-2 12-8 12-14 0-4-2-8-6-10 2-4 3-8 2-12-2-8-8-14-16-16z"/>
+              <circle cx="18" cy="22" r="2" fill="currentColor"/>
+              <circle cx="30" cy="22" r="2" fill="currentColor"/>
+            </svg>
+            <h3>Neuropsykologi</h3>
+            <p>Evidensbaserad förståelse för hur din hjärna fungerar</p>
+          </article>
+          <article class="intro-card">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M24 38c-8-6-14-12-14-20 0-6 5-10 10-10 3 0 6 1 8 4 2-3 5-4 8-4 5 0 10 4 10 10 0 8-6 14-14 20z"/>
+            </svg>
+            <h3>Livscoaching</h3>
+            <p>Personlig vägledning mot dina mål</p>
+          </article>
+          <article class="intro-card">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M8 28h32M24 8v32"/>
+              <circle cx="24" cy="24" r="20"/>
+            </svg>
+            <h3>Balans</h3>
+            <p>Hitta harmoni mellan kropp, sinne och vardag</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Om Jessika -->
+    <section class="fade-in" id="om-jessika" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-grid">
+          <figure class="about-photo">
+            <img src="assets/jessika.png" width="600" height="800" alt="Porträtt av Jessika Ekström, grundare av Alltriva">
+          </figure>
+          <div>
+            <h2 id="about-heading">Möt Jessika Ekström</h2>
+            <p>Legitimerad psykolog med specialisering inom neuropsykologi och kognitiv beteendeterapi. Med över tio års erfarenhet hjälper jag individer och par att förstå sina mönster, bygga resiliens och skapa varaktiga förändringar. Min approach kombinerar den senaste hjärnforskningen med varma, trygga samtal.</p>
+            <div class="credentials">
+              <span class="credential-badge">Leg. Psykolog</span>
+              <span class="credential-badge">Certifierad Coach</span>
+              <span class="credential-badge">Neuropsykologisk specialisering</span>
+            </div>
+            <a href="#om-jessika" class="btn btn-outline">Läs mer om min bakgrund</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Tjänster -->
+    <section class="services-bg fade-in" id="tjanster" aria-labelledby="services-heading">
+      <div class="container">
+        <h2 id="services-heading">Vad jag erbjuder</h2>
+        <p class="section-lead">Skräddarsydda tjänster för din resa mot balans</p>
+        <div class="services-grid">
+          <article class="service-item">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M24 4c-8 2-14 8-16 16-1 4 0 8 2 12-4 2-6 6-6 10 0 6 5 12 12 14 1 4 4 8 10 10 2 1 4 1 6 0 6-2 9-6 10-10 7-2 12-8 12-14 0-4-2-8-6-10 2-4 3-8 2-12-2-8-8-14-16-16z"/></svg>
+            <h3>Individuell terapi</h3>
+            <p>KBT och neuropsykologisk behandling anpassad efter dina behov och mål.</p>
+            <a href="#bokning" class="read-more">Läs mer →</a>
+          </article>
+          <article class="service-item">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 36l12-12 12 12M24 8v16"/></svg>
+            <h3>Livscoaching</h3>
+            <p>Målsättning, personlig utveckling och stöd i livets pussel.</p>
+            <a href="#bokning" class="read-more">Läs mer →</a>
+          </article>
+          <article class="service-item">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 28c0-4 4-8 8-8s8 4 8 8M12 40h24M20 20a4 4 0 018 0"/></svg>
+            <h3>Parterapi</h3>
+            <p>Kommunikation, anknytning och relationsverktyg för er tillsammans.</p>
+            <a href="#bokning" class="read-more">Läs mer →</a>
+          </article>
+          <article class="service-item">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="2"/><path d="M16 20h16M16 26h10"/></svg>
+            <h3>Föreläsningar &amp; workshops</h3>
+            <p>Neurovetenskap för företag och grupper – engagerande och praktiskt.</p>
+            <a href="#kontakt" class="read-more">Läs mer →</a>
+          </article>
+        </div>
+        <div class="services-cta">
+          <p>Osäker på vad som passar dig? Boka ett kostnadsfritt 15-minuterssamtal</p>
+          <a href="#bokning" class="btn btn-accent">Boka samtal</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Neurovetenskap -->
+    <section class="section-science fade-in" id="neurovetenskap" aria-labelledby="science-heading">
+      <div class="container">
+        <h2 id="science-heading">Vetenskapen bakom förändring</h2>
+        <p class="section-lead">På Alltriva väver jag ihop neurovetenskap och psykologi i praktiken – så att du förstår varför förändring känns som den gör, och hur du kan skapa hållbara steg framåt med hjärnan som medspelare.</p>
+        <div class="science-facts">
+          <article class="science-fact">
+            <h3>Neuroplasticitet</h3>
+            <p>Din hjärna kan alltid förändras – nya vanor och medveten träning omformar neurala nätverk över tid.</p>
+          </article>
+          <article class="science-fact">
+            <h3>Stressreglering</h3>
+            <p>Förstå ditt nervsystem – när du känner igen fight, flight och freeze blir det lättare att välja lugnande strategier.</p>
+          </article>
+          <article class="science-fact">
+            <h3>Beteendemönster</h3>
+            <p>Bryt gamla vanor med ny kunskap – insikt om hjärnans belönings- och hottsystem gör förändring begriplig.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Omdömen carousel -->
+    <section class="testimonials fade-in" id="omdomen" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <h2 id="testimonials-heading">Vad mina klienter säger</h2>
+        <div class="carousel" id="testimonial-carousel" aria-live="polite">
+          <div class="carousel-slide active" data-index="0">
+            <p class="stars" aria-label="5 av 5 stjärnor">★★★★★</p>
+            <blockquote>«Jessika fick mig att förstå mig själv på ett helt nytt sätt…»</blockquote>
+            <cite>– Anna, 34</cite>
+          </div>
+          <div class="carousel-slide" data-index="1">
+            <p class="stars" aria-label="5 av 5 stjärnor">★★★★★</p>
+            <blockquote>«Äntligen hittade jag någon som kombinerar vetenskap med värme…»</blockquote>
+            <cite>– Erik, 41</cite>
+          </div>
+          <div class="carousel-slide" data-index="2">
+            <p class="stars" aria-label="5 av 5 stjärnor">★★★★★</p>
+            <blockquote>«Bästa beslutet jag tagit för min mentala hälsa…»</blockquote>
+            <cite>– Maria, 28</cite>
+          </div>
+          <div class="carousel-dots" role="tablist" aria-label="Välj omdöme">
+            <button type="button" class="carousel-dot active" data-slide="0" aria-label="Omdöme 1" aria-selected="true"></button>
+            <button type="button" class="carousel-dot" data-slide="1" aria-label="Omdöme 2" aria-selected="false"></button>
+            <button type="button" class="carousel-dot" data-slide="2" aria-label="Omdöme 3" aria-selected="false"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Bokning + FAQ accordion -->
+    <section class="fade-in" id="bokning" aria-labelledby="booking-heading">
+      <div class="container">
+        <h2 id="booking-heading">Boka din tid</h2>
+        <div class="booking-options">
+          <div class="booking-option">
+            <h3>Boka via Calendly</h3>
+            <p>Välj en tid som passar dig direkt i kalendern.</p>
+            <a href="https://calendly.com/alltriva-placeholder" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Öppna Calendly</a>
+          </div>
+          <div class="booking-option">
+            <h3>Mejla oss</h3>
+            <p><a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
+            <a href="mailto:hello@alltriva.se" class="btn btn-outline">Skicka e-post</a>
+          </div>
+        </div>
+        <h3>Vanliga frågor</h3>
+        <ul class="faq-list" id="faq-list">
+          <li class="faq-item">
+            <button type="button" class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">Hur går ett första samtal till?</button>
+            <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <div class="faq-answer-inner">Vi börjar med ett kostnadsfritt 15-minuterssamtal där du berättar var du befinner dig och jag förklarar hur vi kan arbeta tillsammans. Därefter bokar vi vid behov in en första session.</div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">Vad kostar det?</button>
+            <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <div class="faq-answer-inner">Pris varierar beroende på tjänst och upplägg. Du får tydlig information efter introduktionssamtalet – inga dolda avgifter.</div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">Erbjuder du onlinesamtal?</button>
+            <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <div class="faq-answer-inner">Ja. De flesta sessioner sker via säker videolänk. Fysiska möten kan ordnas efter överenskommelse.</div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">Har du tystnadsplikt?</button>
+            <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <div class="faq-answer-inner">Som legitimerad psykolog omfattas jag av sekretess och tystnadsplikt enligt gällande regler. Det du delar i sessionerna behandlas konfidentiellt.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: Kontakt -->
+    <section class="contact-section fade-in" id="kontakt" aria-labelledby="contact-heading">
+      <div class="container">
+        <header class="contact-header">
+          <h2 id="contact-heading">Kontakt</h2>
+          <p class="contact-subtitle">Jag ser fram emot att höra från dig</p>
+        </header>
+        <div class="contact-cards">
+          <article class="contact-card">
+            <div class="contact-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            </div>
+            <p class="contact-card-label">Mejla oss</p>
+            <p>Du når mig enklast via e-post – jag återkommer så snart jag kan.</p>
+            <p><a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
+            <a class="map-link" href="mailto:hello@alltriva.se">Skicka e-post →</a>
+          </article>
+          <article class="contact-card">
+            <div class="contact-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <p class="contact-card-label">Öppettider</p>
+            <p>Måndag – Fredag: 09:00 – 17:00</p>
+            <p>Lördag – Söndag: Stängt</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Nyhetsbrev-banner -->
+    <div class="newsletter-banner fade-in">
+      <div class="newsletter-banner-inner">
+        <div class="newsletter-banner-text">
+          <h2>Prenumerera på Alltriva-nyhetsbrevet</h2>
+          <p>Få tips om hjärnhälsa, balans och välmående direkt i inkorgen.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" action="#" method="post" aria-label="Nyhetsbrev">
+          <label for="newsletter-email" class="visually-hidden" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">E-postadress</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="Din e-postadress" required autocomplete="email">
+          <button type="submit" class="btn-newsletter">Prenumerera</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SECTION: Footer -->
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="footer-logo" href="#hem">Alltriva</a>
+            <p class="footer-tagline">Där vägar möts för ett liv i balans</p>
+            <nav class="footer-social" aria-label="Sociala medier">
+              <a href="https://instagram.com/alltriva" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.4.4 1.1.5 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.3-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.4.2-1.1.4-2.3.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.3-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.4-.4-1.1-.5-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.3.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .4-.2 1.1-.4 2.3-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-2 .4-.5.2-.9.4-1.2.7-.3.3-.5.7-.7 1.2-.2.4-.3 1-.4 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.4.9.7 1.2.3.3.7.5 1.2.7.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.9-.4 1.2-.7.3-.3.5-.7.7-1.2.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.4-.9-.7-1.2-.3-.3-.7-.5-1.2-.7-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.8a3.7 3.7 0 100 7.4 3.7 3.7 0 000-7.4zm5.8-2.4a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/></svg>
+              </a>
+              <a href="https://linkedin.com/in/jessika-ekstrom" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.6c0-1.1-.02-2.5-1.5-2.5-1.5 0-1.7 1.2-1.7 2.4V19h-3v-9h2.9v1.2h.04c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V19z"/></svg>
+              </a>
+              <a href="https://facebook.com/alltriva" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </nav>
+          </div>
+          <div class="footer-col">
+            <h3 class="footer-col-title">Snabblänkar</h3>
+            <ul class="footer-links">
+              <li><a href="#hem">Hem</a></li>
+              <li><a href="#om-jessika">Om Jessika</a></li>
+              <li><a href="#tjanster">Tjänster</a></li>
+              <li><a href="#neurovetenskap">Neurovetenskap</a></li>
+              <li><a href="#omdomen">Omdömen</a></li>
+              <li><a href="#bokning">Boka tid</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-contact">
+            <h3 class="footer-col-title">Kontakt</h3>
+            <p>Jessika Ekström</p>
+            <p><a href="mailto:hello@alltriva.se">hello@alltriva.se</a></p>
+          </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+          <p>&copy; 2026 Alltriva. Alla rättigheter förbehållna.</p>
+          <div class="footer-legal">
+            <a href="#kontakt">Integritetspolicy</a>
+            <span aria-hidden="true">|</span>
+            <a href="#kontakt">Cookiepolicy</a>
+            <span aria-hidden="true">|</span>
+            <span>Webbplats av Shoreline Tech Studio</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- SECTION: Chat widget -->
+  <button type="button" class="chat-fab" id="chat-fab" aria-label="Öppna chatt" aria-controls="chat-panel" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8 8 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8 8 0 014.7-7.6 8.4 8.4 0 013.8-.9h.4a8.1 8.1 0 018 8v.4z"/>
+    </svg>
+  </button>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" aria-hidden="true">
+    <div class="chat-header">
+      <div>
+        <h2 id="chat-title">Hej! Hur kan jag hjälpa dig?</h2>
+        <p style="margin:0;font-size:0.85rem;opacity:0.9;">Jessika Ekström · Alltriva</p>
+      </div>
+      <button type="button" class="chat-close" id="chat-close" aria-label="Stäng chatt">&times;</button>
+    </div>
+    <div class="chat-messages" id="chat-messages" tabindex="0"></div>
+    <form class="chat-form" id="chat-form">
+      <label for="chat-input" class="visually-hidden" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">Skriv meddelande</label>
+      <input type="text" id="chat-input" name="message" placeholder="Skriv ditt meddelande..." autocomplete="off">
+      <button type="submit">Skicka</button>
+    </form>
+  </div>
+
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Tillbaka till toppen">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var header = document.getElementById("site-header");
+      var navToggle = document.getElementById("nav-toggle");
+      var navMenu = document.getElementById("nav-menu");
+      var navOverlay = document.getElementById("nav-overlay");
+      var backToTop = document.getElementById("back-to-top");
+
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        header.classList.toggle("scrolled", y > 20);
+        backToTop.classList.toggle("visible", y > 400);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      function setNavOpen(open) {
+        navMenu.classList.toggle("open", open);
+        navOverlay.classList.toggle("visible", open);
+        navOverlay.setAttribute("aria-hidden", open ? "false" : "true");
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      navToggle.addEventListener("click", function () {
+        setNavOpen(!navMenu.classList.contains("open"));
+      });
+      navOverlay.addEventListener("click", function () { setNavOpen(false); });
+
+      navMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          setNavOpen(false);
+        });
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener("click", function (e) {
+          var id = anchor.getAttribute("href");
+          if (id.length < 2) return;
+          var target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          var offset = header.offsetHeight;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: top, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        });
+      });
+
+      backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      });
+
+      var fadeEls = document.querySelectorAll(".fade-in");
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        fadeEls.forEach(function (el) { io.observe(el); });
+      } else {
+        fadeEls.forEach(function (el) { el.classList.add("is-visible"); });
+      }
+
+      var slides = document.querySelectorAll(".carousel-slide");
+      var dots = document.querySelectorAll(".carousel-dot");
+      var currentSlide = 0;
+      var carouselTimer;
+
+      function goToSlide(index) {
+        currentSlide = index;
+        slides.forEach(function (s, i) {
+          s.classList.toggle("active", i === index);
+        });
+        dots.forEach(function (d, i) {
+          d.classList.toggle("active", i === index);
+          d.setAttribute("aria-selected", i === index ? "true" : "false");
+        });
+      }
+
+      function nextSlide() {
+        goToSlide((currentSlide + 1) % slides.length);
+      }
+
+      function startCarousel() {
+        clearInterval(carouselTimer);
+        carouselTimer = setInterval(nextSlide, 5000);
+      }
+
+      dots.forEach(function (dot) {
+        dot.addEventListener("click", function () {
+          goToSlide(Number(dot.getAttribute("data-slide")));
+          startCarousel();
+        });
+      });
+      startCarousel();
+
+      document.querySelectorAll(".faq-item").forEach(function (item) {
+        var btn = item.querySelector(".faq-question");
+        var answer = item.querySelector(".faq-answer");
+        btn.addEventListener("click", function () {
+          var isOpen = item.classList.toggle("open");
+          btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          if (isOpen) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          } else {
+            answer.style.maxHeight = "0";
+          }
+        });
+      });
+
+      var chatFab = document.getElementById("chat-fab");
+      var chatPanel = document.getElementById("chat-panel");
+      var chatClose = document.getElementById("chat-close");
+      var chatForm = document.getElementById("chat-form");
+      var chatInput = document.getElementById("chat-input");
+      var chatMessages = document.getElementById("chat-messages");
+
+      function setChatOpen(open) {
+        chatPanel.classList.toggle("open", open);
+        chatPanel.setAttribute("aria-hidden", open ? "false" : "true");
+        chatFab.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) chatInput.focus();
+      }
+
+      chatFab.addEventListener("click", function () {
+        setChatOpen(!chatPanel.classList.contains("open"));
+      });
+      chatClose.addEventListener("click", function () { setChatOpen(false); });
+
+      function appendMsg(text, who) {
+        var div = document.createElement("div");
+        div.className = "chat-msg " + who;
+        div.textContent = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      chatForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var text = chatInput.value.trim();
+        if (!text) return;
+        appendMsg(text, "user");
+        chatInput.value = "";
+        setTimeout(function () {
+          appendMsg("Tack för ditt meddelande! Jessika återkommer inom 24 timmar.", "bot");
+        }, 800);
+      });
+
+      document.getElementById("newsletter-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Tack för din prenumeration! (Frontend-placeholder – ingen backend kopplad ännu.)");
+        e.target.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
